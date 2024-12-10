@@ -3,6 +3,7 @@ package ru.new_year;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class Tree {
@@ -17,12 +18,17 @@ public class Tree {
         int spaceOutside = 16;
         int spaceInside = 3;
         for (int i = 0; i < 21; i += 3, spaceOutside -= 2, spaceInside += 4) {
-            tab[i + 3] = " ".repeat(spaceOutside) + '/' + " ".repeat(spaceInside) + '\\';
-            tab[i + 4] = " ".repeat(spaceOutside - 1) + '/' + " ".repeat(spaceInside + 2) + '\\';
-            tab[i + 5] = " ".repeat(spaceOutside - 2) + "/_" + " ".repeat(spaceInside + 2) + "_\\";
+            tab[i + 3] = String.join("", Collections.nCopies(spaceOutside, " ")) + '/' +
+                    String.join("", Collections.nCopies(spaceInside, " ")) + '\\';
+
+            tab[i + 4] = String.join("", Collections.nCopies(spaceOutside - 1, " ")) + '/' +
+                    String.join("", Collections.nCopies(spaceInside + 2, " ")) + '\\';
+
+            tab[i + 5] = String.join("", Collections.nCopies(spaceOutside - 2, " ")) +
+                    "/_" + String.join("", Collections.nCopies(spaceInside + 2, " ")) + "_\\";
         }
-        tab[23] = "  /" + ":".repeat(31) + '\\';
-        tab[24] = "               \\" + "_".repeat(6) + '/';
+        tab[23] = "  /" + String.join("", Collections.nCopies(31, ":")) + '\\';
+        tab[24] = "               \\" + String.join("", Collections.nCopies(6, "_")) + '/';
     }
 
     public void displayTree() {
@@ -209,7 +215,7 @@ public class Tree {
     public void addGlassBalls() {
         tab[21] = replaceCharAt(tab[21], 11, 'o');
         tab[15] = replaceCharAt(tab[15], 11, 'o');
-        tab[9] = replaceCharAt(tab[9], 16, 'o');
+        tab[9] = replaceCharAt(tab[9], 14, 'o');
         tab[4] = replaceCharAt(tab[4], 18, 'o');
         tab[20] = replaceCharAt(tab[20], 18, 'o');
         tab[6] = replaceCharAt(tab[6], 21, 'o');

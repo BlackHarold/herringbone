@@ -1,4 +1,5 @@
-package ru.new_year;
+import ru.new_year.Floor;
+import ru.new_year.Tree;
 
 import java.util.Scanner;
 
